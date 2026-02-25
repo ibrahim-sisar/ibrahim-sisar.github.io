@@ -1,128 +1,535 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G8D4DNMNZ1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ibrahim Abu Al Roos | Innovator & Engineer</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-  gtag('config', 'G-G8D4DNMNZ1');
-</script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
-    <title>ibrahim abu al roos</title>
-  </head>
-  <body>
-    <div class="container"></div>
-    <header>
-      <h1 id="logo">ibrahim-sisar</h1>
-      <nav class="navigation">
-        <ul>
-          <li><a href="#aboutMe">About Me</a></li>
-          <li><a href="#MyWorks">My Works</a></li>
-          <li><a href="#contactMe">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
-    <hr />
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --primary: #38bdf8; /* أزرق فاتح */
+            --secondary: #818cf6; /* بنفسجي */
+            --accent: #f43f5e; /* لون للتميز مثل TEDx */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Tajawal', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- Navbar --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn-nav {
+            padding: 10px 25px;
+            background: var(--gradient);
+            color: white !important;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+        }
+
+        .btn-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* خلفية ضبابية جمالية */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(56,189,248,0.15) 0%, rgba(15,23,42,0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(244, 63, 94, 0.15);
+            color: var(--accent);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border: 1px solid rgba(244, 63, 94, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .gradient-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 90%;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--bg-dark);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--text-muted);
+            color: var(--text-main);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .hero-img {
+            position: relative;
+        }
+
+        .hero-img img {
+            width: 400px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            border: 2px solid rgba(56, 189, 248, 0.3);
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* --- Social Proof --- */
+        .stats-bar {
+            background: var(--bg-card);
+            padding: 40px 8%;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- Projects Section --- */
+        .section {
+            padding: 100px 8%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.4s;
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .card-img {
+            height: 200px;
+            background-color: #333; /* Placeholder color */
+            /* Add actual images here */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        /* Overlays for images */
+        .img-1 { background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80'); }
+        .img-2 { background-image: url('https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&w=800&q=80'); }
+        .img-3 { background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80'); }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .tech-tag {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .project-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .card-links a {
+            color: white;
+            margin-right: 15px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+
+        .card-links a:hover {
+            color: var(--primary);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #0b1120;
+            padding: 50px 8%;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .social-links {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .social-btn:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; } /* Simplified for demo */
+            
+            .hero {
+                flex-direction: column-reverse;
+                justify-content: center;
+                text-align: center;
+                padding-top: 100px;
+            }
+
+            .hero-content { margin-top: 40px; }
+            
+            .hero h1 { font-size: 2.5rem; }
+            
+            .hero-btns { justify-content: center; }
+
+            .hero-img img { width: 280px; height: 280px; }
+            
+            .stats-bar { gap: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">Ibrahim<span>.Dev</span></a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#projects">Work</a>
+            <a href="#achievements">Achievements</a>
+            <a href="#contact" class="btn-nav">Contact Me</a>
+        </div>
+    </nav>
 
     <section class="hero">
-      <img class="arrow" src="assets/svg/arrow.svg" alt="arrow" />
-      <div class="heroSub">
-        <h1 class="name">I’m ibrahim abu al roos</h1>
-        <h1 class="title">Software Engineer</h1>
-        <div class="heroBtns">
-          <a class="hireMe" href="#contactMe">Contact me</a>
-          <a class="cv" href="#aboutMe">About Me</a>
+        <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+            <span class="badge"><i class="fas fa-microphone-alt"></i> TEDx Speaker</span>
+            <h1>Turning Ideas Into <br> <span class="gradient-text">Smart Realities</span></h1>
+            <p>Ibrahim Abu Al Roos. Award-winning Software Engineer & Robotics Innovator from Gaza. Crafting high-performance digital solutions.</p>
+            <div class="hero-btns">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="https://github.com/ibrahim-sisar" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
+            </div>
         </div>
-      </div>
-      <img src="assets/svg/ibrahim.png" alt="hero image" class="heroImg" />
+        <div class="hero-img" data-aos="fade-left" data-aos-duration="1000">
+            <img src="https://github.com/ibrahim-sisar.png" onerror="this.src='https://via.placeholder.com/400x400/38bdf8/ffffff?text=Ibrahim'" alt="Ibrahim Profile">
+        </div>
     </section>
 
-    <section class="aboutMe" id="aboutMe">
-      <img
-        width="500px"
-        src="assets/svg/tedx.png"
-        alt="aboutMe image"
-        class="aboutMeImg"
-      />
-      <div class="textContainer">
-        <div class="textTitle">
-          <h1 class="aboutName">About</h1>
-          <h1 class="aboutTitle">me</h1>
-          <img src="assets/svg/lightbulb.svg" alt="ligh" class="light" />
+    <div class="stats-bar" data-aos="fade-up">
+        <div class="stat-item">
+            <h3>5+</h3>
+            <p>Years Coding</p>
         </div>
-        <p class="aboutMePar" style="color: #eeeeeed3;">
-          <strong>Ibrahim Said Abu Al Roos</strong> is a Palestinian programmer and innovator from Gaza. My journey in programming and robotics began at the age of 12, driven by a passion for technology and a desire to create smart solutions that improve people's lives.<br><br>
-I have mastered several programming languages, including Python, C, JavaScript, and SQL, and have developed projects in web applications, artificial intelligence, and robotics. I have received local and international awards for my projects, including the WRO Robotics Olympiad and the Scientific and Technological Exhibition, proudly representing Palestine in global competitions.<br><br>
+        <div class="stat-item">
+            <h3>10+</h3>
+            <p>Awards Won</p>
+        </div>
+        <div class="stat-item">
+            <h3>20+</h3>
+            <p>Projects Built</p>
+        </div>
+        <div class="stat-item">
+            <h3>1st</h3>
+            <p>Place WRO</p>
+        </div>
+    </div>
 
-I was also a TEDx speaker, where I shared my journey and experiences in programming and innovation to inspire young minds and encourage creativity and development.<br><br>
-
-My goal is to continue learning and innovating, contribute to developing smart technological solutions that serve communities, and leave my mark in the world of technology.
-        </p>
-      </div>
+    <section id="about" class="section">
+        <div class="section-header" data-aos="fade-up">
+            <h2>About Me</h2>
+            <p>Driven by passion, fueled by innovation.</p>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center; color: var(--text-muted);" data-aos="fade-up">
+            <p>My journey began at age 12 in Gaza. Since then, I've mastered <strong>Python, C, and JavaScript</strong> to build robots and software that solve real-world problems. Representing Palestine in global competitions has taught me that code is not just syntax—it's a tool for change.</p>
+        </div>
     </section>
 
-    <section class="works" id="MyWorks">
-      <div class="worksContainer">
-        <div class="projectTitle">
-          <h1 class="aboutName">My recent</h1>
-          <h1 class="aboutTitle">works</h1>
+    <section id="projects" class="section">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Featured Projects</h2>
+            <p>A selection of my recent work.</p>
         </div>
-        <ul>
-          <li>
-            <a href="https://github.com/ibrahim-sisar/python-markt"
-            target="_blank"
-              ><img src="assets/imgs/python-market.png" alt="landing Page"
-            /></a>
-          </li>
-          <li>
-            <a href="https://github.com/ibrahim-sisar/QuickChat" target="_blank"><img src="assets/imgs/quickchat.png" alt="Wep App" /></a>
-          </li>
-          <li>
-            <a href="https://github.com/ibrahim-sisar/CRUDS" target="_blank"><img src="assets/imgs/CRUDS.png" alt="App" /></a>
-          </li>
-        </ul>
-      </div>
+        
+        <div class="projects-grid">
+            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-img img-1"></div>
+                <div class="card-content">
+                    <div class="tech-stack">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                    </div>
+                    <h3>EduLite Platform</h3>
+                    <p>A smart educational platform designed for low-bandwidth areas, helping students in Gaza access learning materials.</p>
+                    <div class="card-links">
+                        <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        <a href="#"><i class="fab fa-github"></i> Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-img img-2"></div>
+                <div class="card-content">
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">AI</span>
+                    </div>
+                    <h3>Smart Health Bot</h3>
+                    <p>An AI-powered chatbot that assists in preliminary medical diagnosis using natural language processing.</p>
+                    <div class="card-links">
+                        <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        <a href="#"><i class="fab fa-github"></i> Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-img img-3"></div>
+                <div class="card-content">
+                    <div class="tech-stack">
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">Robotics</span>
+                    </div>
+                    <h3>WRO Robot</h3>
+                    <p>The award-winning autonomous robot code used in the World Robot Olympiad international finals.</p>
+                    <div class="card-links">
+                        <a href="#"><i class="fas fa-video"></i> Watch Run</a>
+                        <a href="#"><i class="fab fa-github"></i> Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="contactContainer" id="contactMe">
-      <div class="contactTitle">
-        <h1 class="aboutName">Contact</h1>
-        <h1 class="aboutTitle">me</h1>
-      </div>
-      <div class="contact">
-        <div class="emailAndPhone">
-          <img src="assets/svg/Email.svg" alt="email logo" />
-          <a href="mailto:mkbusiness202@gmail.com"
-            ><h3>ibrahim.sisar@gmail.com</h3></a
-          >
+    <footer id="contact">
+        <div data-aos="zoom-in">
+            <h2>Let's Build Something Great</h2>
+            <p style="color: var(--text-muted); margin: 15px 0;">Open for opportunities and collaborations.</p>
+            
+            <div class="social-links">
+                <a href="mailto:ibrahim.sisar@gmail.com" class="social-btn"><i class="fas fa-envelope"></i></a>
+                <a href="https://linkedin.com/in/ibrahim-abu-al-roos" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/ibrahim-sisar" class="social-btn"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <p style="font-size: 0.8rem; color: #475569; margin-top: 30px;">
+                &copy; 2024 Ibrahim Abu Al Roos. All rights reserved.
+            </p>
         </div>
-      
-      </div>
-      <div class="socialMedia">
-        <a
-          href="https://www.linkedin.com/in/ibrahim-abu-al-roos-a5242134a/"
-          target="_blank"
-          ><img src="assets/svg/linkedin.svg" alt="my linkedin account"
-        /></a>
-        <a href="https://github.com/ibrahim-sisar" target="_blank"
-          ><img src="assets/svg/github.svg" alt=" my github account"
-        /></a>
-        <!-- <a href="https://x.com/MusaabK99" target="_blank"
-          ><img src="assets/svg/twitter.svg" alt="my x account"
-        /></a> -->
-        <a href="https://www.youtube.com/@Ibrahim-sisar" target="_blank"
-          ><img src="assets/svg/youtube.svg" alt="my youtube channel"
-        /></a>
-      </div>
-    </section>
-    <hr />
-    <footer>
-      <p>Built by <a href="https://github.com/ibrahim-sisar" style="color: #00adb5; text-decoration: none;">ibrahim abu al roos</a></p>
     </footer>
-  </body>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Animations
+        AOS.init({
+            offset: 100,
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+        });
+
+        // Simple Console Message
+        console.log("Welcome to Ibrahim's Portfolio! Built with passion.");
+    </script>
+</body>
 </html>
+
