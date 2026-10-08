@@ -1,535 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ibrahim Abu Al Roos | Innovator & Engineer</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <style>
-        :root {
-            --bg-dark: #0f172a;
-            --bg-card: #1e293b;
-            --primary: #38bdf8; /* أزرق فاتح */
-            --secondary: #818cf6; /* بنفسجي */
-            --accent: #f43f5e; /* لون للتميز مثل TEDx */
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', 'Tajawal', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* --- Navbar --- */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-main);
-            text-decoration: none;
-        }
-
-        .logo span {
-            color: var(--primary);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 500;
-            transition: 0.3s;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .btn-nav {
-            padding: 10px 25px;
-            background: var(--gradient);
-            color: white !important;
-            border-radius: 50px;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
-        }
-
-        .btn-nav:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 8%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* خلفية ضبابية جمالية */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(56,189,248,0.15) 0%, rgba(15,23,42,0) 70%);
-            border-radius: 50%;
-            z-index: -1;
-        }
-
-        .hero-content {
-            max-width: 600px;
-        }
-
-        .badge {
-            display: inline-block;
-            background: rgba(244, 63, 94, 0.15);
-            color: var(--accent);
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            border: 1px solid rgba(244, 63, 94, 0.3);
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-
-        .gradient-text {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            max-width: 90%;
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 15px;
-        }
-
-        .btn {
-            padding: 12px 30px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.2s;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: var(--bg-dark);
-        }
-
-        .btn-outline {
-            border: 1px solid var(--text-muted);
-            color: var(--text-main);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-        }
-
-        .hero-img {
-            position: relative;
-        }
-
-        .hero-img img {
-            width: 400px;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            border: 2px solid rgba(56, 189, 248, 0.3);
-            animation: float 6s ease-in-out infinite;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* --- Social Proof --- */
-        .stats-bar {
-            background: var(--bg-card);
-            padding: 40px 8%;
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-item h3 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        .stat-item p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* --- Projects Section --- */
-        .section {
-            padding: 100px 8%;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        .section-header p {
-            color: var(--text-muted);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            background: var(--bg-card);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: 0.4s;
-            border: 1px solid rgba(255,255,255,0.05);
-            position: relative;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-
-        .card-img {
-            height: 200px;
-            background-color: #333; /* Placeholder color */
-            /* Add actual images here */
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-        
-        /* Overlays for images */
-        .img-1 { background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80'); }
-        .img-2 { background-image: url('https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&w=800&q=80'); }
-        .img-3 { background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80'); }
-
-        .card-content {
-            padding: 25px;
-        }
-
-        .tech-stack {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .tech-tag {
-            background: rgba(56, 189, 248, 0.1);
-            color: var(--primary);
-            padding: 4px 10px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .project-card h3 {
-            margin-bottom: 10px;
-            font-size: 1.4rem;
-        }
-
-        .project-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-
-        .card-links a {
-            color: white;
-            margin-right: 15px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: 0.3s;
-        }
-
-        .card-links a:hover {
-            color: var(--primary);
-        }
-
-        /* --- Footer --- */
-        footer {
-            background: #0b1120;
-            padding: 50px 8%;
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .social-links {
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .social-btn {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: var(--bg-card);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: 0.3s;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .social-btn:hover {
-            background: var(--primary);
-            transform: translateY(-5px);
-        }
-
-        /* --- Mobile Responsive --- */
-        @media (max-width: 768px) {
-            .nav-links { display: none; } /* Simplified for demo */
-            
-            .hero {
-                flex-direction: column-reverse;
-                justify-content: center;
-                text-align: center;
-                padding-top: 100px;
-            }
-
-            .hero-content { margin-top: 40px; }
-            
-            .hero h1 { font-size: 2.5rem; }
-            
-            .hero-btns { justify-content: center; }
-
-            .hero-img img { width: 280px; height: 280px; }
-            
-            .stats-bar { gap: 40px; }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ibrahim Abu Al Roos | Software developer and robotics builder</title>
+<meta name="description" content="Self-taught developer from Gaza, based in Cairo. Builds software and robots for people working with low connectivity, limited resources, and emergencies.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f6f2; --ink:#172321; --muted:#5a6663; --line:#d9ddd6;
+  --green:#1d6a48; --red:#b3261e;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#111917; --ink:#e8ece8; --muted:#9aa7a2; --line:#27332f; --green:#5fc08f; --red:#e5645c;}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:1rem;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--ink);text-decoration-color:var(--green);text-underline-offset:3px;text-decoration-thickness:1.5px}
+a:hover{color:var(--green)}
+a:focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:2px}
+.wrap{max-width:46rem;margin:0 auto;padding:3.5rem 1.5rem 4rem}
+header.top{display:flex;align-items:center;gap:1rem;margin-bottom:4.5rem}
+header.top img{width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:var(--line)}
+header.top strong{display:block;font-weight:600;line-height:1.2}
+header.top span{color:var(--muted);font-size:.9rem}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.2rem,6.2vw,3.5rem);line-height:1.1;letter-spacing:-.015em;margin:0 0 1.5rem;max-width:18ch}
+.lede{font-size:1.15rem;max-width:36rem;margin:0 0 1.75rem}
+.status{display:inline-flex;align-items:center;gap:.6rem;font-size:.92rem;color:var(--muted);margin:0 0 .75rem}
+.status i{width:.55rem;height:.55rem;border-radius:50%;background:var(--red);flex:none}
+.links{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;margin:0}
+.links a{font-weight:500}
+section{margin-top:4.5rem}
+h2{font-family:var(--serif);font-weight:600;font-size:1.6rem;line-height:1.2;margin:0 0 1.5rem}
+.row{display:grid;grid-template-columns:9rem 1fr;gap:.25rem 1.5rem;padding:1.15rem 0;border-top:1px solid var(--line)}
+.row:last-child{border-bottom:1px solid var(--line)}
+.row .k{color:var(--muted);font-size:.9rem;padding-top:.15rem}
+.row h3{font-size:1.05rem;font-weight:600;margin:0 0 .15rem;line-height:1.4}
+.row p{margin:0;color:var(--muted)}
+.row .extra{margin-top:.4rem;font-size:.92rem}
+.row .extra a{margin-right:1rem}
+.about p{max-width:38rem;margin:0 0 1rem}
+.dedication{margin-top:4.5rem;padding-top:1.5rem;border-top:1px solid var(--line);font-family:var(--serif);font-style:italic;color:var(--muted);max-width:34rem}
+footer{margin-top:2.5rem;font-size:.85rem;color:var(--muted)}
+@media (max-width:34rem){
+  .row{grid-template-columns:1fr}
+  header.top{margin-bottom:3rem}
+  section{margin-top:3.5rem}
+}
+</style>
 </head>
 <body>
+<div class="wrap">
 
-    <nav>
-        <a href="#" class="logo">Ibrahim<span>.Dev</span></a>
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#projects">Work</a>
-            <a href="#achievements">Achievements</a>
-            <a href="#contact" class="btn-nav">Contact Me</a>
-        </div>
-    </nav>
+<header class="top">
+  <img src="https://github.com/ibrahim-sisar.png" alt="Portrait of Ibrahim Abu Al Roos" width="52" height="52">
+  <div>
+    <strong>Ibrahim Abu Al Roos</strong>
+    <span>From Gaza, based in Cairo</span>
+  </div>
+</header>
 
-    <section class="hero">
-        <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
-            <span class="badge"><i class="fas fa-microphone-alt"></i> TEDx Speaker</span>
-            <h1>Turning Ideas Into <br> <span class="gradient-text">Smart Realities</span></h1>
-            <p>Ibrahim Abu Al Roos. Award-winning Software Engineer & Robotics Innovator from Gaza. Crafting high-performance digital solutions.</p>
-            <div class="hero-btns">
-                <a href="#projects" class="btn btn-primary">View My Work</a>
-                <a href="https://github.com/ibrahim-sisar" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
-            </div>
-        </div>
-        <div class="hero-img" data-aos="fade-left" data-aos-duration="1000">
-            <img src="https://github.com/ibrahim-sisar.png" onerror="this.src='https://via.placeholder.com/400x400/38bdf8/ffffff?text=Ibrahim'" alt="Ibrahim Profile">
-        </div>
-    </section>
+<main>
+<h1>I build software and robots for places where things break.</h1>
+<p class="lede">I'm a self-taught developer. My work is for people dealing with slow internet, limited resources, and emergencies: a learning platform that loads on weak connections, an emergency app that reads live disaster data, a robot that plants seeds.</p>
+<p class="status"><i aria-hidden="true"></i>Preparing for my final high school exams, so I'm not taking on new long-term commitments.</p>
+<p class="links">
+  <a href="mailto:ibrahim.sisar@gmail.com">Email</a>
+  <a href="https://github.com/ibrahim-sisar">GitHub</a>
+  <a href="https://www.linkedin.com/in/ibrahim-sisar">LinkedIn</a>
+  <a href="https://www.youtube.com/@Ibrahim-sisar">YouTube</a>
+</p>
 
-    <div class="stats-bar" data-aos="fade-up">
-        <div class="stat-item">
-            <h3>5+</h3>
-            <p>Years Coding</p>
-        </div>
-        <div class="stat-item">
-            <h3>10+</h3>
-            <p>Awards Won</p>
-        </div>
-        <div class="stat-item">
-            <h3>20+</h3>
-            <p>Projects Built</p>
-        </div>
-        <div class="stat-item">
-            <h3>1st</h3>
-            <p>Place WRO</p>
-        </div>
+<section id="projects" aria-labelledby="h-projects">
+  <h2 id="h-projects">Projects</h2>
+  <div class="row">
+    <div class="k">Django, REST</div>
+    <div>
+      <h3><a href="https://github.com/ibrahim-sisar/EduLite">EduLite</a></h3>
+      <p>Open-source e-learning platform built for low-bandwidth and disaster-affected areas. I lead a team of open-source contributors.</p>
     </div>
+  </div>
+  <div class="row">
+    <div class="k">Python, AI, public data APIs</div>
+    <div>
+      <h3>ResQ AI</h3>
+      <p>Emergency response app that combines live data from NASA FIRMS, USGS, and NOAA to help people during earthquakes, fires, and floods. Started at a hackathon.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="k">Django, REST</div>
+    <div>
+      <h3><a href="https://github.com/ibrahim-sisar/QuickChat">QuickChat</a></h3>
+      <p>Social platform with posts, comments, authentication, and real-time updates. Built as part of CS50.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="k">ESP32, Arduino</div>
+    <div>
+      <h3><a href="https://youtu.be/0nFlWDTcbfs">AgreBot</a></h3>
+      <p>Seed-planting robot. It digs, plants, and covers the seeds, and you set the number of seeds, spacing, and rows from a mobile app.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="k">Python</div>
+    <div>
+      <h3>ZEN</h3>
+      <p>Minimalist project-generation and workspace tool for developers, currently in development.</p>
+    </div>
+  </div>
+  <p style="margin-top:1.25rem"><a href="https://github.com/ibrahim-sisar?tab=repositories">All repositories on GitHub</a></p>
+</section>
 
-    <section id="about" class="section">
-        <div class="section-header" data-aos="fade-up">
-            <h2>About Me</h2>
-            <p>Driven by passion, fueled by innovation.</p>
-        </div>
-        <div style="max-width: 800px; margin: 0 auto; text-align: center; color: var(--text-muted);" data-aos="fade-up">
-            <p>My journey began at age 12 in Gaza. Since then, I've mastered <strong>Python, C, and JavaScript</strong> to build robots and software that solve real-world problems. Representing Palestine in global competitions has taught me that code is not just syntax—it's a tool for change.</p>
-        </div>
-    </section>
+<section id="recognition" aria-labelledby="h-rec">
+  <h2 id="h-rec">Recognition</h2>
+  <div class="row">
+    <div class="k">2022</div>
+    <div>
+      <h3>World Robot Olympiad, Germany: 20th place, Bronze Medal</h3>
+      <p>Represented Palestine in the international final.</p>
+      <p class="extra"><a href="https://scoring.wro-association.org/en/event/scoring/29/wro-international-final-2022-germany">Results</a><a href="https://www.unesco.org/en/articles/gaza-germany-gardebot-robot">UNESCO article</a></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="k">2022</div>
+    <div>
+      <h3>National WRO Robotics Challenge: 1st place</h3>
+      <p>Palestine.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="k">2022</div>
+    <div>
+      <h3>Scientific and Technical Exhibition: 1st place and Grand Prize</h3>
+      <p class="extra"><a href="https://aja.me/mmh4cy">Al Jazeera</a><a href="https://www.youtube.com/watch?v=OTWLbMoWY7o">Robot video</a></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="k">2022</div>
+    <div>
+      <h3>TEDx speaker</h3>
+      <p>On learning to code through war and building technology for good.</p>
+      <p class="extra"><a href="https://www.youtube.com/watch?v=hQ-MoyboAKo">Watch the talk</a></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="k">2025</div>
+    <div>
+      <h3>MIT Global AI Hackathon</h3>
+      <p>Participant.</p>
+    </div>
+  </div>
+</section>
 
-    <section id="projects" class="section">
-        <div class="section-header" data-aos="fade-up">
-            <h2>Featured Projects</h2>
-            <p>A selection of my recent work.</p>
-        </div>
-        
-        <div class="projects-grid">
-            <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="card-img img-1"></div>
-                <div class="card-content">
-                    <div class="tech-stack">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Node.js</span>
-                    </div>
-                    <h3>EduLite Platform</h3>
-                    <p>A smart educational platform designed for low-bandwidth areas, helping students in Gaza access learning materials.</p>
-                    <div class="card-links">
-                        <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                        <a href="#"><i class="fab fa-github"></i> Code</a>
-                    </div>
-                </div>
-            </div>
+<section id="certifications" aria-labelledby="h-cert">
+  <h2 id="h-cert">Certifications</h2>
+  <div class="row">
+    <div class="k">Harvard</div>
+    <div><a href="https://certificates.cs50.io/78bacc91-98d0-439c-8d9b-76853177c814.pdf?size=letter">CS50x</a>, <a href="https://certificates.cs50.io/2cec9ded-fb7d-4e13-aba2-000ca400f345.pdf?size=letter">CS50P</a></div>
+  </div>
+  <div class="row">
+    <div class="k">IBM</div>
+    <div><a href="https://courses.edx.org/certificates/2f0ee053304841d8910f1ef2158e9263">Git and GitHub Basics</a></div>
+  </div>
+  <div class="row">
+    <div class="k">NVIDIA</div>
+    <div><a href="https://learn.nvidia.com/certificates?id=R-jFD8a8RBu4Cv1mhq2CBA">Getting Started with Deep Learning</a></div>
+  </div>
+  <div class="row">
+    <div class="k">DataCamp</div>
+    <div><a href="https://www.datacamp.com/portfolio/ibrahimsisar">Introduction to SQL, Introduction to Python, Introduction to Functions in Python</a></div>
+  </div>
+</section>
 
-            <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="card-img img-2"></div>
-                <div class="card-content">
-                    <div class="tech-stack">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">AI</span>
-                    </div>
-                    <h3>Smart Health Bot</h3>
-                    <p>An AI-powered chatbot that assists in preliminary medical diagnosis using natural language processing.</p>
-                    <div class="card-links">
-                        <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                        <a href="#"><i class="fab fa-github"></i> Code</a>
-                    </div>
-                </div>
-            </div>
+<section id="about" class="about" aria-labelledby="h-about">
+  <h2 id="h-about">About</h2>
+  <p>I started programming in Gaza and kept learning through the war. I work mostly in Python, with Django and Flask for the web, Tkinter for desktop tools, OpenCV for vision, and Arduino and ESP32 for robots. I use Linux and Git every day.</p>
+  <p>I speak Arabic and English.</p>
+</section>
 
-            <div class="project-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="card-img img-3"></div>
-                <div class="card-content">
-                    <div class="tech-stack">
-                        <span class="tech-tag">C++</span>
-                        <span class="tech-tag">Robotics</span>
-                    </div>
-                    <h3>WRO Robot</h3>
-                    <p>The award-winning autonomous robot code used in the World Robot Olympiad international finals.</p>
-                    <div class="card-links">
-                        <a href="#"><i class="fas fa-video"></i> Watch Run</a>
-                        <a href="#"><i class="fab fa-github"></i> Code</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<p class="dedication">Dedicated to the memory of my father, Said Ibrahim Abu Al-Roos. May Allah have mercy on his soul.</p>
+</main>
 
-    <footer id="contact">
-        <div data-aos="zoom-in">
-            <h2>Let's Build Something Great</h2>
-            <p style="color: var(--text-muted); margin: 15px 0;">Open for opportunities and collaborations.</p>
-            
-            <div class="social-links">
-                <a href="mailto:ibrahim.sisar@gmail.com" class="social-btn"><i class="fas fa-envelope"></i></a>
-                <a href="https://linkedin.com/in/ibrahim-abu-al-roos" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://github.com/ibrahim-sisar" class="social-btn"><i class="fab fa-github"></i></a>
-                <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
-            </div>
-            
-            <p style="font-size: 0.8rem; color: #475569; margin-top: 30px;">
-                &copy; 2024 Ibrahim Abu Al Roos. All rights reserved.
-            </p>
-        </div>
-    </footer>
+<footer>This page is a single HTML file with no frameworks and no tracking.</footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // Initialize Animations
-        AOS.init({
-            offset: 100,
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true,
-        });
-
-        // Simple Console Message
-        console.log("Welcome to Ibrahim's Portfolio! Built with passion.");
-    </script>
+</div>
 </body>
 </html>
-
